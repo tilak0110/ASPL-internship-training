@@ -1,0 +1,51 @@
+-- Creating a simple function that returns a greeting message
+DELIMITER //
+CREATE FUNCTION get_greeting(name VARCHAR(50)) RETURNS VARCHAR(100)
+DETERMINISTIC
+BEGIN
+    RETURN CONCAT('Hello, ', name, '! Welcome to MySQL Functions.');
+END //
+DELIMITER ;
+
+-- Example usage:
+SELECT get_greeting('Tilak');
+
+-- Creating a function to calculate square of a number
+DELIMITER //
+CREATE FUNCTION square_number(n INT) RETURNS INT
+DETERMINISTIC
+BEGIN
+    RETURN n * n;
+END //
+DELIMITER ;
+
+-- Example usage:
+SELECT square_number(5);
+
+-- Creating a function to get total number of books from Library table
+DELIMITER //
+CREATE FUNCTION get_total_books() RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE total INT;
+    SELECT COUNT(*) INTO total FROM books;
+    RETURN total;
+END //
+DELIMITER ;
+
+-- Example usage:
+SELECT get_total_books();
+
+-- Creating a function to calculate total price of books by category
+DELIMITER //
+CREATE FUNCTION total_price_by_category(cat_id INT) RETURNS DECIMAL(10,2)
+DETERMINISTIC
+BEGIN
+    DECLARE total_price DECIMAL(10,2);
+    SELECT SUM(price) INTO total_price FROM books WHERE category_id = cat_id;
+    RETURN total_price;
+END //
+DELIMITER ;
+
+-- Example usage:
+SELECT total_price_by_category(1);

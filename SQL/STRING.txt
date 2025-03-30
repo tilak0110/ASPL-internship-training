@@ -1,0 +1,67 @@
+-- String Functions in MySQL
+
+-- 1. CONCAT: Combines multiple strings into one.
+SELECT CONCAT('Hello', ' ', 'World') AS CombinedString;
+
+-- 2. CONCAT_WS: Combines strings with a separator.
+SELECT CONCAT_WS('-', '2025', '03', '30') AS DateString;
+
+-- 3. LENGTH: Returns the length of a string in bytes.
+SELECT LENGTH('Hello World') AS StringLength;
+
+-- 4. CHAR_LENGTH: Returns the number of characters in a string.
+SELECT CHAR_LENGTH('Hello World') AS CharCount;
+
+-- 5. UPPER / LOWER: Converts a string to uppercase or lowercase.
+SELECT UPPER('hello') AS UpperCaseText, LOWER('WORLD') AS LowerCaseText;
+
+-- 6. LEFT / RIGHT: Extracts a substring from the left or right.
+SELECT LEFT('MySQL Functions', 5) AS LeftSubstring;
+SELECT RIGHT('MySQL Functions', 9) AS RightSubstring;
+
+-- 7. SUBSTRING: Extracts part of a string.
+SELECT SUBSTRING('Database Management', 10, 5) AS SubString;
+
+-- 8. REPLACE: Replaces occurrences of a substring.
+SELECT REPLACE('I love Java', 'Java', 'MySQL') AS ReplacedString;
+
+-- 9. REVERSE: Reverses a string.
+SELECT REVERSE('MySQL') AS ReversedString;
+
+-- 10. TRIM / LTRIM / RTRIM: Removes spaces from a string.
+SELECT TRIM('  Hello World  ') AS TrimmedString;
+SELECT LTRIM('  Hello') AS LeftTrimmed;
+SELECT RTRIM('World  ') AS RightTrimmed;
+
+-- 11. LPAD / RPAD: Pads a string with a given character.
+SELECT LPAD('123', 5, '0') AS LeftPadded;
+SELECT RPAD('123', 5, '0') AS RightPadded;
+
+-- 12. LOCATE / POSITION: Finds the position of a substring.
+SELECT LOCATE('SQL', 'MySQL Functions') AS PositionSQL;
+SELECT POSITION('SQL' IN 'MySQL Functions') AS FoundPosition;
+
+-- 13. STRCMP: Compares two strings.
+SELECT STRCMP('apple', 'banana') AS CompareResult;
+
+-- 14. FIELD: Returns the index position of a value in a list.
+SELECT FIELD('C', 'A', 'B', 'C', 'D') AS FieldPosition;
+
+-- 15. ASCII / CHAR: Gets ASCII code of a character or converts ASCII to character.
+SELECT ASCII('A') AS AsciiValue;
+SELECT CHAR(65) AS CharValue;
+
+-- 16. SOUNDEX: Returns a phonetic representation of a string.
+SELECT SOUNDEX('Robert') AS SoundexCode;
+
+-- 17. FORMAT: Formats numbers with a given decimal place.
+SELECT FORMAT(12345.6789, 2) AS FormattedNumber;
+
+-- 18. REPEAT: Repeats a string a specified number of times.
+SELECT REPEAT('MySQL', 3) AS RepeatedString;
+
+-- 19. ELT: Returns the nth element in a list.
+SELECT ELT(2, 'One', 'Two', 'Three') AS SecondElement;
+
+-- 20. EXPORT_SET: Returns a string with bits replaced by custom values.
+SELECT EXPORT_SET(5, 'Yes', 'No', ',', 4) AS ExportResult;

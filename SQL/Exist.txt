@@ -1,0 +1,55 @@
+-- EXISTS Clause Examples in MySQL
+
+-- 1. Basic EXISTS Example: Check if a record exists in another table
+SELECT * FROM employees e
+WHERE EXISTS (
+    SELECT 1 FROM departments d
+    WHERE d.department_id = e.department_id
+);
+
+-- 2. Using EXISTS with a Subquery
+SELECT employee_id, employee_name
+FROM employees e
+WHERE EXISTS (
+    SELECT 1 FROM salaries s
+    WHERE s.employee_id = e.employee_id AND s.salary > 50000
+);
+
+-- 3. Using NOT EXISTS to Find Missing Records
+SELECT * FROM customers c
+WHERE NOT EXISTS (
+    SELECT 1 FROM orders o
+    WHERE o.customer_id = c.customer_id
+);
+
+-- 4. EXISTS with Multiple Conditions
+SELECT * FROM employees e
+WHERE EXISTS (
+    SELECT 1 FROM projects p
+    WHERE p.employee_id = e.employee_id 
+    AND p.status = 'Active'
+);
+
+-- 5. EXISTS in DELETE Statement
+DELETE FROM employees e
+WHERE EXISTS (
+    SELECT 1 FROM retired_employees r
+    WHERE r.employee_id = e.employee_id
+);
+
+-- 6. EXISTS in UPDATE Statement
+UPDATE employees e
+SET salary = salary * 1.1
+WHERE EXISTS (
+    SELECT 1 FROM promotions p
+    WHERE p.employee_id = e.employee_id
+);
+
+-- 7. EXISTS in INSERT Statement
+INSERT INTO high_salary_employees (employee_id, employee_name, salary)
+SELECT employee_id, employee_name, salary
+FROM employees e
+WHERE EXISTS (
+    SELECT 1 FROM salaries s
+    WHERE s.employee_id = e.employee_id AND s.salary > 70000
+);

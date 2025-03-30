@@ -1,0 +1,52 @@
+-- Creating sample tables for demonstration
+CREATE TABLE Employees (
+    EmpID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    DeptID INT
+);
+
+CREATE TABLE Departments (
+    DeptID INT PRIMARY KEY,
+    DeptName VARCHAR(100)
+);
+
+-- Inserting sample data
+INSERT INTO Employees (EmpID, Name, DeptID) VALUES
+(1, 'Alice', 1),
+(2, 'Bob', 2),
+(3, 'Charlie', NULL),
+(4, 'David', 1);
+
+INSERT INTO Departments (DeptID, DeptName) VALUES
+(1, 'HR'),
+(2, 'IT'),
+(3, 'Finance');
+
+-- INNER JOIN: Select employees with matching departments
+SELECT Employees.Name, Departments.DeptName
+FROM Employees
+INNER JOIN Departments ON Employees.DeptID = Departments.DeptID;
+
+-- LEFT JOIN: Select all employees with department info (if available)
+SELECT Employees.Name, Departments.DeptName
+FROM Employees
+LEFT JOIN Departments ON Employees.DeptID = Departments.DeptID;
+
+-- RIGHT JOIN: Select all departments with employees (if available)
+SELECT Employees.Name, Departments.DeptName
+FROM Employees
+RIGHT JOIN Departments ON Employees.DeptID = Departments.DeptID;
+
+-- FULL OUTER JOIN (simulated using UNION)
+SELECT Employees.Name, Departments.DeptName
+FROM Employees
+LEFT JOIN Departments ON Employees.DeptID = Departments.DeptID
+UNION
+SELECT Employees.Name, Departments.DeptName
+FROM Employees
+RIGHT JOIN Departments ON Employees.DeptID = Departments.DeptID;
+
+-- CROSS JOIN: Cartesian product of both tables
+SELECT Employees.Name, Departments.DeptName
+FROM Employees
+CROSS JOIN Departments;

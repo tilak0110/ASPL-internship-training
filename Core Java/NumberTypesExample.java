@@ -12,13 +12,16 @@ public class NumberTypesExample {
         BigInteger bigInt2 = new BigInteger("1234567890123456789");
 
         BigInteger sumBigInt = bigInt1.add(bigInt2);
+
         BigInteger multiplyBigInt = bigInt1.multiply(bigInt2);
 
         System.out.println("BigInteger Sum: " + sumBigInt);
+
         System.out.println("BigInteger Product: " + multiplyBigInt);
 
         //  BigDecimal - Handling High-Precision Decimal Values
         BigDecimal bigDec1 = new BigDecimal("12345.67890123456789");
+
         BigDecimal bigDec2 = new BigDecimal("0.000000000123456789");
 
         BigDecimal sumBigDec = bigDec1.add(bigDec2);

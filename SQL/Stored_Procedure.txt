@@ -1,0 +1,52 @@
+-- Creating a simple stored procedure
+DELIMITER $$
+CREATE PROCEDURE GetAllUsers()
+BEGIN
+    SELECT * FROM users;
+END $$
+DELIMITER;
+
+-- Calling the stored procedure
+CALL GetAllUsers();
+
+-- Creating a stored procedure with parameters
+DELIMITER $$
+CREATE PROCEDURE GetUserById(IN userId INT)
+BEGIN
+    SELECT * FROM users WHERE id = userId;
+END $$
+DELIMITER;
+
+-- Calling the stored procedure with a parameter
+CALL GetUserById(1);
+
+-- Creating a stored procedure with an output parameter
+DELIMITER $$
+CREATE PROCEDURE GetUserCount(OUT totalUsers INT)
+BEGIN
+    SELECT COUNT(*) INTO totalUsers FROM users;
+END $$
+DELIMITER;
+
+-- Declaring a variable to store the output and calling the procedure
+SET @count = 0;
+CALL GetUserCount(@count);
+SELECT @count AS TotalUsers;
+
+-- Creating a stored procedure with conditional logic
+DELIMITER $$
+CREATE PROCEDURE GetUsersByAge(IN minAge INT, IN maxAge INT)
+BEGIN
+    IF minAge > maxAge THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Invalid age range';
+    ELSE
+        SELECT * FROM users WHERE age BETWEEN minAge AND maxAge;
+    END IF;
+END $$
+DELIMITER;
+
+-- Calling the procedure with an age range
+CALL GetUsersByAge(20, 30);
+
+-- Dropping a stored procedure
+DROP PROCEDURE IF EXISTS GetAllUsers;

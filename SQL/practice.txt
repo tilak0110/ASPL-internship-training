@@ -1,0 +1,516 @@
+mysql> create database tilak_db;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use tilak_db;
+Database changed
+mysql>
+mysql> -- Creating Tables
+mysql> create table users (
+    ->     id int auto_increment primary key,
+    ->     name varchar(100),
+    ->     email varchar(100) unique,
+    ->     age int,
+    ->     salary decimal(10,2),
+    ->     team_id int default null
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql>
+mysql> create table teams (
+    ->     id int auto_increment primary key,
+    ->     name varchar(100) unique
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
+mysql> create table gadgets (
+    ->     id int auto_increment primary key,
+    ->     name varchar(100),
+    ->     price decimal(10,2),
+    ->     category varchar(50)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql>
+mysql> -- Inserting Data
+mysql> insert into users (name, email, age, salary) values
+    -> ('Tilak', 'tilak@example.com', 25, 70000.00),
+    -> ('Raj', 'raj@example.com', 27, 65000.00),
+    -> ('Sahu', 'sahu@example.com', 30, 80000.00),
+    -> ('Vikas', 'vikas@example.com', 32, 90000.00),
+    -> ('Amit', 'amit@example.com', 28, 75000.00),
+    -> ('Rohit', 'rohit@example.com', 26, 72000.00),
+    -> ('Deepak', 'deepak@example.com', 29, 77000.00),
+    -> ('Karan', 'karan@example.com', 31, 82000.00),
+    -> ('Ankit', 'ankit@example.com', 24, 68000.00),
+    -> ('Manoj', 'manoj@example.com', 35, 95000.00);
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> insert into teams (name) values
+    -> ('Development'), ('Marketing'), ('Support'), ('HR'), ('Finance'),
+    -> ('Sales'), ('Operations'), ('Legal'), ('IT'), ('Customer Service');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> insert into gadgets (name, price, category) values
+    -> ('MacBook', 1500.00, 'Electronics'),
+    -> ('Chair', 200.00, 'Furniture'),
+    -> ('Smartwatch', 300.00, 'Wearable'),
+    -> ('iPhone', 1200.00, 'Electronics'),
+    -> ('Desk', 400.00, 'Furniture'),
+    -> ('Monitor', 500.00, 'Electronics'),
+    -> ('Headphones', 150.00, 'Audio'),
+    -> ('Mouse', 50.00, 'Accessories'),
+    -> ('Keyboard', 100.00, 'Accessories'),
+    -> ('Tablet', 800.00, 'Electronics');
+Query OK, 10 rows affected (0.01 sec)
+Records: 10  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> -- Selecting Data
+mysql> select * from users;
++----+--------+--------------------+------+----------+---------+
+| id | name   | email              | age  | salary   | team_id |
++----+--------+--------------------+------+----------+---------+
+|  1 | Tilak  | tilak@example.com  |   25 | 70000.00 |    NULL |
+|  2 | Raj    | raj@example.com    |   27 | 65000.00 |    NULL |
+|  3 | Sahu   | sahu@example.com   |   30 | 80000.00 |    NULL |
+|  4 | Vikas  | vikas@example.com  |   32 | 90000.00 |    NULL |
+|  5 | Amit   | amit@example.com   |   28 | 75000.00 |    NULL |
+|  6 | Rohit  | rohit@example.com  |   26 | 72000.00 |    NULL |
+|  7 | Deepak | deepak@example.com |   29 | 77000.00 |    NULL |
+|  8 | Karan  | karan@example.com  |   31 | 82000.00 |    NULL |
+|  9 | Ankit  | ankit@example.com  |   24 | 68000.00 |    NULL |
+| 10 | Manoj  | manoj@example.com  |   35 | 95000.00 |    NULL |
++----+--------+--------------------+------+----------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select name, salary from users where age > 25;
++--------+----------+
+| name   | salary   |
++--------+----------+
+| Raj    | 65000.00 |
+| Sahu   | 80000.00 |
+| Vikas  | 90000.00 |
+| Amit   | 75000.00 |
+| Rohit  | 72000.00 |
+| Deepak | 77000.00 |
+| Karan  | 82000.00 |
+| Manoj  | 95000.00 |
++--------+----------+
+8 rows in set (0.00 sec)
+
+mysql> select * from users order by salary desc limit 3;
++----+-------+-------------------+------+----------+---------+
+| id | name  | email             | age  | salary   | team_id |
++----+-------+-------------------+------+----------+---------+
+| 10 | Manoj | manoj@example.com |   35 | 95000.00 |    NULL |
+|  4 | Vikas | vikas@example.com |   32 | 90000.00 |    NULL |
+|  8 | Karan | karan@example.com |   31 | 82000.00 |    NULL |
++----+-------+-------------------+------+----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select count(*) from users;
++----------+
+| count(*) |
++----------+
+|       10 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select avg(salary) from users;
++--------------+
+| avg(salary)  |
++--------------+
+| 77400.000000 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select name from users where name like 'T%';
++-------+
+| name  |
++-------+
+| Tilak |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select * from gadgets where price between 200 and 1500;
++----+------------+---------+-------------+
+| id | name       | price   | category    |
++----+------------+---------+-------------+
+|  1 | MacBook    | 1500.00 | Electronics |
+|  2 | Chair      |  200.00 | Furniture   |
+|  3 | Smartwatch |  300.00 | Wearable    |
+|  4 | iPhone     | 1200.00 | Electronics |
+|  5 | Desk       |  400.00 | Furniture   |
+|  6 | Monitor    |  500.00 | Electronics |
+| 10 | Tablet     |  800.00 | Electronics |
++----+------------+---------+-------------+
+7 rows in set (0.00 sec)
+
+mysql> select distinct category from gadgets;
++-------------+
+| category    |
++-------------+
+| Electronics |
+| Furniture   |
+| Wearable    |
+| Audio       |
+| Accessories |
++-------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from users where email like '%example.com%';
++----+--------+--------------------+------+----------+---------+
+| id | name   | email              | age  | salary   | team_id |
++----+--------+--------------------+------+----------+---------+
+|  1 | Tilak  | tilak@example.com  |   25 | 70000.00 |    NULL |
+|  2 | Raj    | raj@example.com    |   27 | 65000.00 |    NULL |
+|  3 | Sahu   | sahu@example.com   |   30 | 80000.00 |    NULL |
+|  4 | Vikas  | vikas@example.com  |   32 | 90000.00 |    NULL |
+|  5 | Amit   | amit@example.com   |   28 | 75000.00 |    NULL |
+|  6 | Rohit  | rohit@example.com  |   26 | 72000.00 |    NULL |
+|  7 | Deepak | deepak@example.com |   29 | 77000.00 |    NULL |
+|  8 | Karan  | karan@example.com  |   31 | 82000.00 |    NULL |
+|  9 | Ankit  | ankit@example.com  |   24 | 68000.00 |    NULL |
+| 10 | Manoj  | manoj@example.com  |   35 | 95000.00 |    NULL |
++----+--------+--------------------+------+----------+---------+
+10 rows in set (0.00 sec)
+
+mysql> select * from users where age in (25, 28, 30, 35);
++----+-------+-------------------+------+----------+---------+
+| id | name  | email             | age  | salary   | team_id |
++----+-------+-------------------+------+----------+---------+
+|  1 | Tilak | tilak@example.com |   25 | 70000.00 |    NULL |
+|  3 | Sahu  | sahu@example.com  |   30 | 80000.00 |    NULL |
+|  5 | Amit  | amit@example.com  |   28 | 75000.00 |    NULL |
+| 10 | Manoj | manoj@example.com |   35 | 95000.00 |    NULL |
++----+-------+-------------------+------+----------+---------+
+4 rows in set (0.00 sec)
+
+mysql>
+mysql> -- Updating and Deleting Data
+mysql> update users set salary = 75000 where name = 'Raj';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update users set age = age + 1 where name = 'Tilak';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update gadgets set price = price * 1.1 where category = 'Electronics';
+Query OK, 4 rows affected (0.00 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> delete from users where name = 'Sahu';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> delete from gadgets where category = 'Furniture';
+Query OK, 2 rows affected (0.00 sec)
+
+mysql> update users set salary = salary + 5000 where age > 30;
+Query OK, 3 rows affected (0.01 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> update teams set name = 'Tech Team' where name = 'Development';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> delete from users where age < 26;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> delete from teams where name = 'Customer Service';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> update gadgets set price = price - 50 where category = 'Accessories';
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql>
+mysql> -- Joins and Set Operations
+mysql> update users set team_id = 1 where name = 'Tilak';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update users set team_id = 2 where name = 'Raj';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>
+mysql> select users.name, users.salary, teams.name as team
+    -> from users
+    -> join teams on users.team_id = teams.id;
++-------+----------+-----------+
+| name  | salary   | team      |
++-------+----------+-----------+
+| Tilak | 70000.00 | Tech Team |
+| Raj   | 75000.00 | Marketing |
++-------+----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql> select users.name, users.salary, teams.name as team
+    -> from users
+    -> left join teams on users.team_id = teams.id;
++--------+-----------+-----------+
+| name   | salary    | team      |
++--------+-----------+-----------+
+| Tilak  |  70000.00 | Tech Team |
+| Raj    |  75000.00 | Marketing |
+| Vikas  |  95000.00 | NULL      |
+| Amit   |  75000.00 | NULL      |
+| Rohit  |  72000.00 | NULL      |
+| Deepak |  77000.00 | NULL      |
+| Karan  |  87000.00 | NULL      |
+| Manoj  | 100000.00 | NULL      |
++--------+-----------+-----------+
+8 rows in set (0.00 sec)
+
+mysql>
+mysql> select users.name, users.salary
+    -> from users
+    -> union
+    -> select name, price from gadgets;
++------------+-----------+
+| name       | salary    |
++------------+-----------+
+| Tilak      |  70000.00 |
+| Raj        |  75000.00 |
+| Vikas      |  95000.00 |
+| Amit       |  75000.00 |
+| Rohit      |  72000.00 |
+| Deepak     |  77000.00 |
+| Karan      |  87000.00 |
+| Manoj      | 100000.00 |
+| MacBook    |   1650.00 |
+| Smartwatch |    300.00 |
+| iPhone     |   1320.00 |
+| Monitor    |    550.00 |
+| Headphones |    150.00 |
+| Mouse      |      0.00 |
+| Keyboard   |     50.00 |
+| Tablet     |    880.00 |
++------------+-----------+
+16 rows in set (0.00 sec)
+
+mysql>
+mysql> select users.name, salary from users where team_id in (1, 2);
++-------+----------+
+| name  | salary   |
++-------+----------+
+| Tilak | 70000.00 |
+| Raj   | 75000.00 |
++-------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select users.name from users where team_id is null;
++--------+
+| name   |
++--------+
+| Vikas  |
+| Amit   |
+| Rohit  |
+| Deepak |
+| Karan  |
+| Manoj  |
++--------+
+6 rows in set (0.00 sec)
+
+mysql> select users.name, teams.name from users left join teams on users.team_id = teams.id;
++--------+-----------+
+| name   | name      |
++--------+-----------+
+| Tilak  | Tech Team |
+| Raj    | Marketing |
+| Vikas  | NULL      |
+| Amit   | NULL      |
+| Rohit  | NULL      |
+| Deepak | NULL      |
+| Karan  | NULL      |
+| Manoj  | NULL      |
++--------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> select users.name, users.salary from users cross join teams;
++--------+-----------+
+| name   | salary    |
++--------+-----------+
+| Manoj  | 100000.00 |
+| Karan  |  87000.00 |
+| Deepak |  77000.00 |
+| Rohit  |  72000.00 |
+| Amit   |  75000.00 |
+| Vikas  |  95000.00 |
+| Raj    |  75000.00 |
+| Tilak  |  70000.00 |
+| Manoj  | 100000.00 |
+| Karan  |  87000.00 |
+| Deepak |  77000.00 |
+| Rohit  |  72000.00 |
+| Amit   |  75000.00 |
+| Vikas  |  95000.00 |
+| Raj    |  75000.00 |
+| Tilak  |  70000.00 |
+| Manoj  | 100000.00 |
+| Karan  |  87000.00 |
+| Deepak |  77000.00 |
+| Rohit  |  72000.00 |
+| Amit   |  75000.00 |
+| Vikas  |  95000.00 |
+| Raj    |  75000.00 |
+| Tilak  |  70000.00 |
+| Manoj  | 100000.00 |
+| Karan  |  87000.00 |
+| Deepak |  77000.00 |
+| Rohit  |  72000.00 |
+| Amit   |  75000.00 |
+| Vikas  |  95000.00 |
+| Raj    |  75000.00 |
+| Tilak  |  70000.00 |
+| Manoj  | 100000.00 |
+| Karan  |  87000.00 |
+| Deepak |  77000.00 |
+| Rohit  |  72000.00 |
+| Amit   |  75000.00 |
+| Vikas  |  95000.00 |
+| Raj    |  75000.00 |
+| Tilak  |  70000.00 |
+| Manoj  | 100000.00 |
+| Karan  |  87000.00 |
+| Deepak |  77000.00 |
+| Rohit  |  72000.00 |
+| Amit   |  75000.00 |
+| Vikas  |  95000.00 |
+| Raj    |  75000.00 |
+| Tilak  |  70000.00 |
+| Manoj  | 100000.00 |
+| Karan  |  87000.00 |
+| Deepak |  77000.00 |
+| Rohit  |  72000.00 |
+| Amit   |  75000.00 |
+| Vikas  |  95000.00 |
+| Raj    |  75000.00 |
+| Tilak  |  70000.00 |
+| Manoj  | 100000.00 |
+| Karan  |  87000.00 |
+| Deepak |  77000.00 |
+| Rohit  |  72000.00 |
+| Amit   |  75000.00 |
+| Vikas  |  95000.00 |
+| Raj    |  75000.00 |
+| Tilak  |  70000.00 |
+| Manoj  | 100000.00 |
+| Karan  |  87000.00 |
+| Deepak |  77000.00 |
+| Rohit  |  72000.00 |
+| Amit   |  75000.00 |
+| Vikas  |  95000.00 |
+| Raj    |  75000.00 |
+| Tilak  |  70000.00 |
++--------+-----------+
+72 rows in set (0.00 sec)
+
+mysql>
+mysql> -- Using LIMIT and OFFSET
+mysql> select * from users limit 2 offset 1;
++----+-------+-------------------+------+----------+---------+
+| id | name  | email             | age  | salary   | team_id |
++----+-------+-------------------+------+----------+---------+
+|  2 | Raj   | raj@example.com   |   27 | 75000.00 |       2 |
+|  4 | Vikas | vikas@example.com |   32 | 95000.00 |    NULL |
++----+-------+-------------------+------+----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from users order by age asc limit 5;
++----+--------+--------------------+------+----------+---------+
+| id | name   | email              | age  | salary   | team_id |
++----+--------+--------------------+------+----------+---------+
+|  1 | Tilak  | tilak@example.com  |   26 | 70000.00 |       1 |
+|  6 | Rohit  | rohit@example.com  |   26 | 72000.00 |    NULL |
+|  2 | Raj    | raj@example.com    |   27 | 75000.00 |       2 |
+|  5 | Amit   | amit@example.com   |   28 | 75000.00 |    NULL |
+|  7 | Deepak | deepak@example.com |   29 | 77000.00 |    NULL |
++----+--------+--------------------+------+----------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select name, salary from users order by salary desc limit 3;
++-------+-----------+
+| name  | salary    |
++-------+-----------+
+| Manoj | 100000.00 |
+| Vikas |  95000.00 |
+| Karan |  87000.00 |
++-------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from users where age > 27 limit 4;
++----+--------+--------------------+------+----------+---------+
+| id | name   | email              | age  | salary   | team_id |
++----+--------+--------------------+------+----------+---------+
+|  4 | Vikas  | vikas@example.com  |   32 | 95000.00 |    NULL |
+|  5 | Amit   | amit@example.com   |   28 | 75000.00 |    NULL |
+|  7 | Deepak | deepak@example.com |   29 | 77000.00 |    NULL |
+|  8 | Karan  | karan@example.com  |   31 | 87000.00 |    NULL |
++----+--------+--------------------+------+----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from users where salary between 60000 and 80000 limit 2;
++----+-------+-------------------+------+----------+---------+
+| id | name  | email             | age  | salary   | team_id |
++----+-------+-------------------+------+----------+---------+
+|  1 | Tilak | tilak@example.com |   26 | 70000.00 |       1 |
+|  2 | Raj   | raj@example.com   |   27 | 75000.00 |       2 |
++----+-------+-------------------+------+----------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from users order by name desc limit 3;
++----+-------+-------------------+------+----------+---------+
+| id | name  | email             | age  | salary   | team_id |
++----+-------+-------------------+------+----------+---------+
+|  4 | Vikas | vikas@example.com |   32 | 95000.00 |    NULL |
+|  1 | Tilak | tilak@example.com |   26 | 70000.00 |       1 |
+|  6 | Rohit | rohit@example.com |   26 | 72000.00 |    NULL |
++----+-------+-------------------+------+----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select * from gadgets order by price limit 3;
++----+------------+--------+-------------+
+| id | name       | price  | category    |
++----+------------+--------+-------------+
+|  8 | Mouse      |   0.00 | Accessories |
+|  9 | Keyboard   |  50.00 | Accessories |
+|  7 | Headphones | 150.00 | Audio       |
++----+------------+--------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from gadgets order by price desc limit 3;
++----+---------+---------+-------------+
+| id | name    | price   | category    |
++----+---------+---------+-------------+
+|  1 | MacBook | 1650.00 | Electronics |
+|  4 | iPhone  | 1320.00 | Electronics |
+| 10 | Tablet  |  880.00 | Electronics |
++----+---------+---------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from teams limit 2;
++----+---------+
+| id | name    |
++----+---------+
+|  5 | Finance |
+|  4 | HR      |
++----+---------+
+2 rows in set (0.00 sec)
+
+mysql> select * from users where name like 'A%' limit 2;
++----+------+------------------+------+----------+---------+
+| id | name | email            | age  | salary   | team_id |
++----+------+------------------+------+----------+---------+
+|  5 | Amit | amit@example.com |   28 | 75000.00 |    NULL |
++----+------+------------------+------+----------+---------+
+1 row in set (0.00 sec)
+
+mysql>
