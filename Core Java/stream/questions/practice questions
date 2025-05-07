@@ -1,0 +1,42 @@
+Here are 20 Stream-based Questions:
+
+
+Find all even numbers from a list.
+
+Square each number in a list.
+
+Find the longest string from a list.
+
+Count how many strings start with 'A'.
+
+Convert a list of strings to uppercase.
+
+Sort a list in reverse order.
+
+Find the sum of all odd numbers.
+
+Remove duplicate elements from a list.
+
+Find the second highest number.
+
+Check if all numbers are positive.
+
+Find the average of a list of integers.
+
+Partition numbers into even and odd.
+
+Group strings by their length.
+
+Join a list of strings with commas.
+
+Check if any string starts with "T".
+
+Find the frequency of each word in a list.
+
+Find common elements between two lists.
+
+Find the first element greater than 10.
+
+Multiply all elements using reduce().
+
+Create a map from a list of users with id as key.

@@ -19,6 +19,6 @@ public class DaemonThreadDemo {
         t1.setDaemon(true); // Convert to daemon thread
 
         t1.start();
-        System.out.println("Main thread ends...");
+        System.out.println("java9features.Try_With_Resource_Enhancement.Main thread ends...");
     }
 }

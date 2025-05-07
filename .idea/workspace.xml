@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9790ebec-ab1e-4797-b75b-c96489b7003f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/CollectExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/CountExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/DistinctExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/DoubleStreamExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/FibonacciStream.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/FilterExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/FindAnyExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/FindFirstExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/FlatMapMultiples.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/ForEachExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/GenerateExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/InfiniteStreamExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/LimitExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/LongStreamExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/MapExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/MatchExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/MinMaxExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/MultiplesOfSeven.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/ParallelStreamExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/PartitionAndGroupByExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/PeekExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/RangeExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/ReduceExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/SecondLargest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/SkipExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/SortedDescending.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/SortedExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/StreamExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/StreamFromArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/StreamFromCollection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/SumExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/WithFlatMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/WithoutFlatMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/questions/StreamProblems.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core Java/stream/questions/practice questions" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/config/JwtFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/controllers/TodoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/controllers/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/dto/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/dto/RegisterRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/entities/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/entities/Todo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/entities/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/entities/UserPrincipal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/exceptions/UserNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/repositories/TodoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/serviceImpl/JWTServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/serviceImpl/TodoServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/serviceImpl/UserDetailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/serviceImpl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/services/TodoService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/Tudu/src/main/java/com/example/Tudu/services/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/firstboot/src/main/java/com/example/firstboot/controllers/EmployeeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/firstboot/src/main/java/com/example/firstboot/model/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/firstboot/src/main/java/com/example/firstboot/services/EmployeeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/src/main/java/org/example/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/src/main/java/org/example/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/src/main/java/org/example/Company.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/src/main/java/org/example/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/src/main/java/org/example/Department.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/src/main/java/org/example/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/src/main/java/org/example/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/src/main/resources/hibernate.cfg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/hibernatePractice/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/jeera_practice/src/main/java/com/example/jeera_/practice/aop/LoggingAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/jeera_practice/src/main/java/com/example/jeera_/practice/entities/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/jeera_practice/src/main/java/com/example/jeera_/practice/entities/Issue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/jeera_practice/src/main/java/com/example/jeera_/practice/entities/Project.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/jeera_practice/src/main/java/com/example/jeera_/practice/entities/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/jeera_practice/src/main/java/com/example/jeera_/practice/exception/CustomException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/jeera_practice/src/main/java/com/example/jeera_/practice/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/jeera_practice/src/main/java/com/example/jeera_/practice/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Eclipse Workspace/jeera_practice/src/main/java/com/example/jeera_/practice/scheduler/ReminderScheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/src/main/java/org/example/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/src/main/java/org/example/model/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/src/main/java/org/example/model/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/src/main/java/org/example/model/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/src/main/resources/spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Spring Project/springproject/src/test/java/org/example/AppTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core Java/out/production/Core Java/NumberTypesExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/Core Java/out/production/Core Java/NumberTypesExample.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "tilak0110"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/tilak0110/ASPL-internship-training.git",
+    "accountId": "fc9ae90a-e17c-43f5-94e7-5e655a3e7188"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2wiJPykOIGkOPiPD50vXo0yi48f" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/tilak/OneDrive/Desktop/Learnings/ASPL-internship-training"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\tilak\OneDrive\Desktop\Learnings\ASPL-internship-training\Core Java\Design Patterns" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9790ebec-ab1e-4797-b75b-c96489b7003f" name="Changes" comment="" />
+      <created>1746518441075</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746518441075</updated>
+    </task>
+    <servers />
+  </component>
+</project>

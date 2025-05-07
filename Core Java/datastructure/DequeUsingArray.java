@@ -118,7 +118,7 @@ public class DequeUsingArray {
         System.out.println();
     }
 
-    // Main function to test the deque
+    // java9features.Try_With_Resource_Enhancement.Main function to test the deque
     public static void main(String[] args) {
         DequeUsingArray deque = new DequeUsingArray(5);
 

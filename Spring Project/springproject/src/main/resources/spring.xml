@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+
+   <bean id="employee" class="org.example.model.Employee">
+       <property name="name" value="tilak"></property>
+       <property name="age" value="24"></property>
+       <property name="student" ref="student"></property>
+
+   </bean>
+    <bean id="student" class="org.example.model.Student">
+        <property name="name" value="Mahendra"></property>
+        <property name="marks" value="95"></property>
+    </bean>
+
+
+</beans>
