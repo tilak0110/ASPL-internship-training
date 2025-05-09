@@ -1,5 +1,5 @@
 package designpattern.Behavioral_Design_Pattern.Visitor_Pattern;
-
+//visitor
 public class Main {
     public static void main(String[] args) {
         ItemElement[] items = new ItemElement[] {

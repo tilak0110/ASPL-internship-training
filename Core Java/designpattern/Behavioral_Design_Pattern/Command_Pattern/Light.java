@@ -3,7 +3,7 @@ package designpattern.Behavioral_Design_Pattern.Command_Pattern;
 class LightOnCommand implements Command {
     private Light light;
 
-    public LightOnCommand(Light light) {
+    public LightOnCommand(designpattern.Behavioral_Design_Pattern.Command_Pattern.Light light) {
         this.light = light;
     }
 

@@ -1,5 +1,5 @@
 package designpattern.Behavioral_Design_Pattern.Chain_of_Responsibility_Pattern;
-
+//Chain of responsibility
 class Level2Support implements SupportHandler {
     private SupportHandler nextHandler;
 

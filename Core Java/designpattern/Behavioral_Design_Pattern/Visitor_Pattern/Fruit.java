@@ -1,5 +1,5 @@
 package designpattern.Behavioral_Design_Pattern.Visitor_Pattern;
-
+//visitor
 class Fruit implements ItemElement {
     private String name;
     private int pricePerKg;

@@ -1,5 +1,5 @@
 package designpattern.Behavioral_Design_Pattern.Visitor_Pattern;
-
+//visitor
 class ShoppingCartVisitorImpl implements ShoppingCartVisitor {
     @Override
     public int visit(Book book) {
