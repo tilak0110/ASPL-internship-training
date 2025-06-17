@@ -1,4 +1,4 @@
-package remaining_topics;
+package remaining_topics.enums;
 
 public enum Coin {
     PENNY(1), NICKEL(5), DIME(10), QUARTER(25); // usual names for US coins

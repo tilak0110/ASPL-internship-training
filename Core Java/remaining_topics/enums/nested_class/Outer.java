@@ -1,4 +1,4 @@
-package remaining_topics.nested_class;
+package remaining_topics.enums.nested_class;
 
 public class Outer {
     static class StaticNested {

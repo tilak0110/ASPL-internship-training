@@ -1,4 +1,4 @@
-package remaining_topics;
+package remaining_topics.enums;
 
 class Coordinates {
     private int x, y;

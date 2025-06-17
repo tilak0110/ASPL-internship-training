@@ -9,7 +9,7 @@ public enum Attendant {
         System.out.println("Hello!");
     }
 }
-public class Main {
+class Main2 {
     public static void main(String... args) {
         Attendant.INSTANCE.sayHello();// instantiated at this point
     }

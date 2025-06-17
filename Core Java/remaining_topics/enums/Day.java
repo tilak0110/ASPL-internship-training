@@ -1,4 +1,4 @@
-package remaining_topics;
+package remaining_topics.enums;
 
 public class Day {
     private Season season;
