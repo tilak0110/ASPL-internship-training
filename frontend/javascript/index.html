@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="index.html"></script>
+</head>
+<body>
+
+<h2>Ordered List with Letters</h2>
+
+<ol type="A">
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+    </ol>  
+    <script>
+        console.log(document.body);
+    </script>
+
+    <h1 id="title"></h1>
+  <p id="description"></p>
+
+  <script>
+    // This code runs as soon as the script is read
+    document.getElementById("title").innerHTML = "Welcome to JavaScript DOM!";
+    document.getElementById("description").textContent = "This content was added automatically without clicking anything.";
+  </script>
+  <h1>Adding an element</h1>
+  <script>
+    var element= document.createElement('p');
+    element.textContent="Inside new paragraph"
+    document.body.appendChild(element);
+    // window.alert('Alert Message');
+    // alert('New Alert Message');
+
+    //  var age = prompt("How old are you?");
+    //  console.log(age);
+
+    //  var deleteConfirm = window.confirm("Are you sure you want to delete this?");
+    //  console.log(deleteConfirm);
+
+
+     //using the dom api
+     var canvas = document.createElement('canvas');
+    canvas.width = 500;
+    nvas.height = 250;
+     var ctx = canvas.getContext('2d');
+      ctx.font = '30px Cursive';
+    ctx.fillText("Hello world!", 50, 50);
+    document.body.appendChild(canvas);
+
+    var img = new Image();
+ img.src = 'https://i.ytimg.com/vi/zecueq-mo4M/maxresdefault.jpg';
+ document.body.appendChild(img);
+
+
+  </script>
+
+</body>
+</html>

@@ -100,4 +100,4 @@ services:
 
 networks:
   tilak:
-    driver: "bridge" q
+    driver: "bridge"
