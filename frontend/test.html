@@ -1,0 +1,29 @@
+<!-- File: cancel-animation.html -->
+<!DOCTYPE html>
+<html>
+<body>
+  <button onclick="stopAnimation()">Stop Animation</button>
+  <div id="movingBox" style="width:100px;height:100px;background:red;position:absolute;"></div>
+
+  <script>
+    let box = document.getElementById("movingBox");
+    let pos = 0;
+    let animationId;
+
+    function moveBox() {
+      pos += 2;
+      box.style.left = pos + "px";
+
+      if (pos < 700) {
+        animationId = requestAnimationFrame(moveBox);
+      }
+    }
+
+    function stopAnimation() {
+      cancelAnimationFrame(animationId);
+    }
+
+    requestAnimationFrame(moveBox);
+  </script>
+</body>
+</html>
