@@ -32,8 +32,9 @@ public class JWTServiceImpl {
     }
 
 
-    public String generateToken(String username, String email, String role,long validity) {
+    public String generateToken(String username, Long id, String email, String role, long validity) {
         Map<String,Object> claims = new HashMap<>();
+       claims.put("id",id);
         claims.put("Email",email);
         claims.put("Role",role);
 

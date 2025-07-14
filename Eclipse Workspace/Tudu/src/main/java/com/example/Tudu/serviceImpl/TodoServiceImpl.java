@@ -6,6 +6,7 @@ import com.example.Tudu.entities.User;
 import com.example.Tudu.repositories.TodoRepository;
 import com.example.Tudu.repositories.UserRepository;
 import com.example.Tudu.services.TodoService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -95,5 +96,11 @@ public class TodoServiceImpl implements TodoService {
         return convertToDto(todoRepository.save(todo));
     }
 
-   
+	@Override
+	@Transactional
+	public long deleteCompletedTodosByUserId(Long userId) {
+		return todoRepository.deleteByUserIdAndCompletedTrue(userId);
+	}
+
+
 }

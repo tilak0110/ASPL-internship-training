@@ -17,4 +17,6 @@ public interface TodoService {
     void deleteTodo(Long todoId);
     
     TodoDto markAsCompleted(Long todoId);
+
+    long deleteCompletedTodosByUserId(Long userId);
 }

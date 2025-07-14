@@ -12,7 +12,7 @@ public class TodoSchedular {
 	
 	private static final Logger log = LoggerFactory.getLogger(TodoSchedular.class);
 	
-	@Scheduled(fixedRate = 5000)
+	@Scheduled(fixedRate = 50000)
 	public void reportCurrentTime() {
 		log.info("the time is now {}", LocalDateTime.now());
 	}

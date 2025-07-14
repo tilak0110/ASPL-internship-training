@@ -81,6 +81,7 @@ public class UserServiceImpl implements UserService {
         if (authentication.isAuthenticated()) {
             String token = jwtService.generateToken(
                     user.getUsername(),
+                    user.getId(),
                     user.getEmail(),
                     user.getRole(),
                     1000 * 60 * 60

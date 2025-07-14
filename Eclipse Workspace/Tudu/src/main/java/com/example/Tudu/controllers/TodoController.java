@@ -89,6 +89,14 @@ public class TodoController {
 	        return ResponseEntity.noContent().build();
 	    }
 
+	@Operation(summary = "Delete all completed todos of user")
+	@DeleteMapping("/completed/{userId}")
+	public ResponseEntity<?> deleteCompletedTodos(@PathVariable Long userId) {
+		long deletedCount = todoService.deleteCompletedTodosByUserId(userId);
+		return ResponseEntity.ok("Deleted " + deletedCount + " completed todos.");
+	}
+
+
 	    @Operation(summary = "Get a todo by its ID")
 	    @GetMapping("/{todoId}")
 	    public ResponseEntity<TodoDto> getTodo(@PathVariable Long todoId) {
