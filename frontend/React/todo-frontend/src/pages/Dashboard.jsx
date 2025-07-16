@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../auth/AuthContext";
 import axiosInstance from "../api/axios";
 import { toast } from "react-toastify";
@@ -25,6 +25,63 @@ const Dashboard = () => {
   const totalTodos = todos.length;
   const completedTodos = todos.filter(todo => todo.completed).length;
   const pendingTodos = totalTodos - completedTodos;
+  
+
+  const isDueSoon = (dueDate) => {
+  const now = new Date();
+  const due = new Date(dueDate);
+  const diff = due - now;
+  return diff > 0 && diff <= 24 * 60 * 60 * 1000; //24 hrs
+  };
+
+  const dueSoonTodos = todos.filter(todo => 
+  !todo.completed && isDueSoon(todo.dueDate)
+  );
+
+  const remindedTodos = useRef(new Set());
+
+  useEffect(() => {
+  if ("Notification" in window && Notification.permission !== "granted") {
+    Notification.requestPermission();
+  }
+  }, []);
+
+  useEffect(() => {
+  const interval = setInterval(() => {
+    const now = new Date();
+
+    todos.forEach((todo) => {
+      const due = new Date(todo.dueDate);
+      const diff = due - now;
+
+      const shouldRemind =
+        !todo.completed &&
+        diff > 0 &&
+        diff <= 10 * 60 * 1000 && 
+        !remindedTodos.current.has(todo.id);
+
+      if (shouldRemind) {
+     
+        toast.info(`⏰ "${todo.title}" is due in ${Math.ceil(diff / 60000)} mins!`);
+
+        
+        if (Notification.permission === "granted") {
+          new Notification("Todo Reminder", {
+            body: `"${todo.title}" is due soon!`,
+            icon: "/productivity.png",
+          });
+        }
+
+      
+        remindedTodos.current.add(todo.id);
+      }
+    });
+  }, 30000); 
+
+  return () => clearInterval(interval);
+}, [todos]);
+
+
 
 
   const sortTodosByDueDate = (todos) =>
@@ -163,93 +220,190 @@ const Dashboard = () => {
 
 
   return (
-    <div style={{ padding: "1rem" }}>
-      <h2>Welcome, {user?.sub}!</h2>
+  <div className="container my-4">
+    <h2 className="mb-4">👋 Welcome, {user?.sub}!</h2>
 
-      <form onSubmit={handleSubmit} style={{ marginBottom: "2rem" }}>
-        <h3>Add a New Todo</h3>
-        <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
-        <br /><br />
-        <textarea placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
-        <br /><br />
-        <input type="datetime-local" value={dueDate} onChange={(e) => setDueDate(e.target.value)} required />
-        <br /><br />
-        <button type="submit">➕ Add Todo</button>
-      </form>
+    {dueSoonTodos.length > 0 && (
+      <div className="alert alert-warning d-flex align-items-center" role="alert">
+        <strong>⏰ Heads up!</strong>&nbsp;
+        You have {dueSoonTodos.length} task{dueSoonTodos.length > 1 && "s"} due soon.
+      </div>
+    )}
 
+    {/* Form */}
+    <form onSubmit={handleSubmit} className="card p-4 mb-4 shadow-sm">
+      <h4 className="mb-3">Add a New Todo</h4>
+      <div className="mb-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+      <div className="mb-3">
+        <textarea
+          className="form-control"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        ></textarea>
+      </div>
+      <div className="mb-3">
+        <input
+          type="datetime-local"
+          className="form-control"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+          required
+        />
+      </div>
+      <button type="submit" className="btn btn-primary">➕ Add Todo</button>
+    </form>
+
+    {/* Sort/Filter/Search */}
+    <div className="d-flex flex-wrap gap-3 mb-4">
       <div>
-        <label htmlFor="sort">Sort By: </label>
-        <select id="sort" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+        <label className="form-label me-2">Sort By:</label>
+        <select className="form-select" value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
           <option value="dueDate">Due Date</option>
           <option value="status">Status</option>
         </select>
       </div>
 
       <div>
-        <label htmlFor="filter">Filter: </label>
-        <select id="filter" value={filter} onChange={(e) => setFilter(e.target.value)}>
+        <label className="form-label me-2">Filter:</label>
+        <select className="form-select" value={filter} onChange={(e) => setFilter(e.target.value)}>
           <option value="all">All</option>
           <option value="completed">Completed</option>
           <option value="pending">Pending</option>
         </select>
       </div>
-      <div>
-        <label htmlFor="search">Search: </label>
+
+      <div className="flex-grow-1">
+        <label className="form-label me-2">Search:</label>
         <input
-          id="search"
           type="text"
+          className="form-control"
           placeholder="Search by title or description"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
-      <div style={{ marginTop: "1rem" }}>
-        <button onClick={clearCompleted}>🧹 Clear Completed</button>
-      </div>
-      <div style={{ marginTop: "1rem", marginBottom: "1rem", fontWeight: "bold" }}>
-        📋 Total: {totalTodos} &nbsp;&nbsp;
-        ✅ Completed: {completedTodos} &nbsp;&nbsp;
-        ⏳ Pending: {pendingTodos}
-      </div>
-
-
-
-
-      {loading ? (
-        <p>⏳ Loading todos...</p>
-      ) : todos.length === 0 ? (
-        <p>📝 No Todos Yet.</p>
-      ) : (
-        <ul>
-          {visibleTodos.map((todo) => (
-            <li key={todo.id} style={{ marginBottom: "1rem" }}>
-              {editId === todo.id ? (
-                <>
-                  <input type="text" name="title" value={editTodo.title} onChange={handleEditChange} />
-                  <input type="text" name="description" value={editTodo.description} onChange={handleEditChange} />
-                  <input type="datetime-local" name="dueDate" value={editTodo.dueDate} onChange={handleEditChange} />
-                  <button onClick={() => saveEdit(todo.id)}>💾 Save</button>
-                  <button onClick={() => setEditId(null)}>❌ Cancel</button>
-                </>
-              ) : (
-                <>
-                  <strong>{todo.title}</strong> -{" "}
-                  <span style={{ color: isOverdue(todo.dueDate) && !todo.completed ? "red" : "black" }}>
-                    {todo.completed ? "✔️ Done" : isOverdue(todo.dueDate) ? "⚠️ Overdue" : "⏳ Pending"}
-                  </span>
-                  <br />
-                  <div>{todo.description}</div>
-                  <button onClick={() => toggleTodo(todo.id)}>🔁 Toggle</button>
-                  <button onClick={() => deleteTodo(todo.id)}>🗑️ Delete</button>
-                  <button onClick={() => startEdit(todo)}>✏️ Edit</button>
-                </>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
     </div>
-  );
+
+    {/* Clear Completed + Stats */}
+    <div className="d-flex justify-content-between align-items-center mb-3">
+      <button onClick={clearCompleted} className="btn btn-outline-danger">
+        🧹 Clear Completed
+      </button>
+      <div className="fw-bold">
+        📋 Total: {totalTodos} &nbsp; ✅ Completed: {completedTodos} &nbsp; ⏳ Pending: {pendingTodos}
+      </div>
+    </div>
+
+    {/* Todo List */}
+    {loading ? (
+      <p>⏳ Loading todos...</p>
+    ) : visibleTodos.length === 0 ? (
+      <p>📝 No Todos Found.</p>
+    ) : (
+      <ul className="list-group">
+        {visibleTodos.map((todo) => (
+          <li key={todo.id} className="list-group-item">
+            {editId === todo.id ? (
+              <>
+                <div className="mb-2">
+                  <input
+                    type="text"
+                    name="title"
+                    className="form-control mb-2"
+                    value={editTodo.title}
+                    onChange={handleEditChange}
+                  />
+                  <input
+                    type="text"
+                    name="description"
+                    className="form-control mb-2"
+                    value={editTodo.description}
+                    onChange={handleEditChange}
+                  />
+                  <input
+                    type="datetime-local"
+                    name="dueDate"
+                    className="form-control mb-2"
+                    value={editTodo.dueDate}
+                    onChange={handleEditChange}
+                  />
+                  <div className="d-flex gap-2">
+                    <button onClick={() => saveEdit(todo.id)} className="btn btn-success btn-sm">
+                      💾 Save
+                    </button>
+                    <button onClick={() => setEditId(null)} className="btn btn-secondary btn-sm">
+                      ❌ Cancel
+                    </button>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h5 className="mb-1">{todo.title}</h5>
+                    <p className="mb-1">{todo.description}</p>
+                    <p className="mb-1 text-muted">
+                      🗓️ <strong>Due:</strong>{" "}
+                      {new Date(todo.dueDate).toLocaleString("en-IN", {
+                        dateStyle: "medium",
+                        timeStyle: "short",
+                      })}
+                    </p>
+                    <small
+                      className={
+                        "badge " +
+                        (todo.completed
+                          ? "bg-success"
+                          : isOverdue(todo.dueDate)
+                          ? "bg-danger"
+                          : isDueSoon(todo.dueDate)
+                          ? "bg-warning text-dark"
+                          : "bg-secondary")
+                      }
+                    >
+                      {todo.completed
+                        ? "✔️ Done"
+                        : isOverdue(todo.dueDate)
+                        ? "⚠️ Overdue"
+                        : isDueSoon(todo.dueDate)
+                        ? "⏰ Due Soon"
+                        : "⏳ Pending"}
+                    </small>
+                  </div>
+                  <div className="d-flex flex-column gap-2 align-items-end">
+                    <button onClick={() => toggleTodo(todo.id)} className="btn btn-outline-primary btn-sm">
+                      🔁 Toggle
+                    </button>
+                    <button onClick={() => deleteTodo(todo.id)} className="btn btn-outline-danger btn-sm">
+                      🗑️ Delete
+                    </button>
+                    <button onClick={() => startEdit(todo)} className="btn btn-outline-secondary btn-sm">
+                      ✏️ Edit
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+);
+
+
 };
 
 export default Dashboard;
