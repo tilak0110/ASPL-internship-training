@@ -3,7 +3,6 @@ class NameCollection {
     this.names = ["Tilak", "Aman", "Sita", "Rahul"];
   }
 
-  // Custom iterable using Symbol.iterator
   [Symbol.iterator]() {
     let index = 0;
     const names = this.names;

@@ -12,7 +12,7 @@
       if (event.origin !== window.origin && event.data) {
         console.log("📨 Message from child:", event.data);
 
-        // Send reply to child
+       
         const iframe = document.getElementById("childFrame");
         iframe.contentWindow.postMessage("👋 Hello from parent!", "*");
       }

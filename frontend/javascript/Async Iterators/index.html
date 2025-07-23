@@ -9,10 +9,10 @@
   <pre id="output"></pre>
 
   <script>
-    // Simulate an async data stream
+   
     async function* asyncCounter(limit) {
       for (let i = 1; i <= limit; i++) {
-        await new Promise(resolve => setTimeout(resolve, 1000)); // simulate delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
         yield `⏳ Value ${i}`;
       }
     }
