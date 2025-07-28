@@ -1,0 +1,8 @@
+h1{
+    color: tomato;
+    color: rgb(255, 99, 71);
+    color: #ff6347;
+    color: hsl(9, 100%, 64%);
+    color: rgba(255, 99, 71, 0.5);
+    color: hsla(9, 100%, 64%,0.5);
+}
