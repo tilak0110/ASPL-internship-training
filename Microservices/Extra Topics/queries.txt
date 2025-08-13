@@ -1,0 +1,71 @@
+#########################################
+# 🔹 Application Level Metrics
+#########################################
+
+# 1. Total API calls (by endpoint, method, status)
+http_server_requests_seconds_count
+
+# 2. API Latency (response time sum in seconds)
+http_server_requests_seconds_sum
+
+# 3. 95th Percentile Response Time (latency)
+histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket[5m])) by (le, uri))
+
+# 4. Error Count (4xx, 5xx responses)
+sum by(status) (rate(http_server_requests_seconds_count{status=~"4..|5.."}[5m]))
+
+
+#########################################
+# 🔹 JVM Metrics
+#########################################
+
+# 5. JVM Heap Memory Used
+jvm_memory_used_bytes{area="heap"}
+
+# 6. JVM Non-Heap Memory Used
+jvm_memory_used_bytes{area="nonheap"}
+
+# 7. JVM Thread Count
+jvm_threads_live_threads
+
+# 8. JVM Garbage Collection Pauses
+rate(jvm_gc_pause_seconds_sum[5m])
+
+
+#########################################
+# 🔹 Database (HikariCP)
+#########################################
+
+# 9. Active DB Connections
+hikaricp_connections_active
+
+# 10. Idle DB Connections
+hikaricp_connections_idle
+
+# 11. Connection Acquire Time
+hikaricp_connections_acquire_seconds_sum
+
+
+#########################################
+# 🔹 System Metrics
+#########################################
+
+# 12. Process CPU Usage
+process_cpu_usage
+
+# 13. System CPU Usage
+system_cpu_usage
+
+# 14. Disk Free Space
+disk_free_bytes
+
+# 15. Uptime of Service
+process_uptime_seconds
+
+
+#########################################
+# 🔹 Spring Data Repository
+#########################################
+
+# 16. Repository Method Calls
+spring_data_repository_invocations_seconds_count
