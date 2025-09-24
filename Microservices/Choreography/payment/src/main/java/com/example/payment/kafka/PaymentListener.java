@@ -17,7 +17,7 @@ public class PaymentListener {
 
     @KafkaListener(topics = "order-created", groupId = "payment-group")
     public void handleOrderCreated(String orderId) {
-        System.out.println("Received OrderCreated event for Order ID: " + orderId);
+        System.err.println("Received OrderCreated event for Order ID: " + orderId);
 
         // Save payment info
         Payment payment = new Payment();
